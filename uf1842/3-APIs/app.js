@@ -1,18 +1,17 @@
-// Tu código aquí
-button = document.querySelector("#btn");
-button.addEventListener('click', getPerson);
+const button = document.querySelector("#btn");
+button.addEventListener("click", getCharacter);
 
-async function getPerson(){
-    const result = await fetch('https://randomuser.me/api/');
+async function getCharacter() {
+    const randomId = Math.floor(Math.random() * 826) + 1;
+    const result = await fetch(`https://rickandmortyapi.com/api/character/${randomId}`);
     const data = await result.json();
-   
-    console.log("Mira la consola del navegador para ver los datos", data);
-   
-    document.querySelector('#first').textContent = data.results[0].name.first.toUpperCase();//Name
-    document.querySelector('#last').textContent = data.results[0].name.last.toUpperCase();//Last name
-    document.querySelector('#country').textContent = data.results[0].location.country.toUpperCase();//Country
-    document.querySelector('#phone').textContent = data.results[0].cell.toUpperCase();//Phone
 
-    /* Faltan dos líneas de código. Una para actualizar la imagen y otra para el email  */
-    
+    console.log("Mira la consola del navegador para ver los datos", data);
+
+    document.querySelector("#first").textContent = data.name.toUpperCase();
+    document.querySelector("#last").textContent = data.status.toUpperCase();
+    document.querySelector("#country").textContent = data.species.toUpperCase();
+    document.querySelector("#phone").textContent = data.gender.toUpperCase();
+    document.querySelector("#photo").src = data.image;
+    document.querySelector("#email").textContent = data.origin.name.toUpperCase();
 }
