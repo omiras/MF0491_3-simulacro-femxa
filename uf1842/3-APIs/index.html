@@ -5,29 +5,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
-  <title>Rick and Morty API</title>
+  <title>Consulta del tiempo</title>
 </head>
 
 <body>
   <main class="container">
-    <h1>Personaje aleatorio</h1>
+    <h1>Consulta del tiempo</h1>
     <article>
-      <header>Datos obtenidos de Rick and Morty API</header>
-      <img id="photo" src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" alt="Foto del personaje aleatorio">
+      <header>Datos meteorológicos</header>
+
+      <label for="citySelect">Selecciona una ciudad</label>
+      <select id="citySelect">
+        <option value="Madrid">Madrid</option>
+        <option value="Barcelona">Barcelona</option>
+        <option value="Valencia">Valencia</option>
+      </select>
+
       <dl>
-        <dt>Nombre</dt>
-        <dd id="first">Rick Sanchez</dd>
+        <dt>Ciudad</dt>
+        <dd id="city">Madrid, España</dd>
+
+        <dt>Temperatura actual</dt>
+        <dd id="temp">--</dd>
+
+        <dt>Sensación térmica</dt>
+        <dd id="feels">--</dd>
+
         <dt>Estado</dt>
-        <dd id="last">Alive</dd>
-        <dt>Especie</dt>
-        <dd id="country">Human</dd>
-        <dt>Género</dt>
-        <dd id="phone">Male</dd>
-        <dt>Origen</dt>
-        <dd id="email">Earth (C-137)</dd>
+        <dd id="summary">--</dd>
+
+        <dt>Mínima / Máxima</dt>
+        <dd id="range">--</dd>
+
+        <dt>Previsión</dt>
+        <dd id="forecast">--</dd>
       </dl>
+
       <footer>
-        <button type="button" id="btn">Obtener nuevo personaje</button>
+        <button type="button" id="btn">Consultar clima</button>
       </footer>
     </article>
   </main>

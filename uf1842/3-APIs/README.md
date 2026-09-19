@@ -1,24 +1,38 @@
-# Ejercicio: Rick and Morty API
+# Ejercicio: Consulta del tiempo
 
-En este ejercicio trabajarás con [la API de Rick and Morty](https://rickandmortyapi.com/) para obtener los datos de un personaje aleatorio.
+En este ejercicio trabajaremos con una API gratuita y estable para consultar el tiempo actual y la previsión de varias ciudades.
 
-## La aplicación ya está montada
+## API elegida
 
-La estructura HTML, el diseño, el botón y la petición a la API ya están preparados. El archivo `app.js` contiene la lógica necesaria para:
+Usamos [Open-Meteo](https://open-meteo.com/), que tiene estas ventajas:
 
-- Escuchar el clic del botón.
-- Generar un identificador aleatorio de personaje.
-- Hacer una petición a la API de Rick and Morty.
-- Convertir la respuesta a JSON.
-- Mostrar en la consola del navegador los datos recibidos.
-- Pintar el nombre, el estado, la especie, el género y el origen del personaje.
+- Es completamente gratuita.
+- No necesita clave API.
+- Tiene soporte CORS para fetch en el navegador.
+- Es estable y muy adecuada para proyectos educativos.
 
-No es necesario crear la aplicación desde cero ni añadir nuevas funciones.
+## Funcionalidad de la aplicación
+
+La página permite elegir entre:
+
+- Madrid
+- Barcelona
+- Valencia
+
+Cuando se selecciona una ciudad, la aplicación hace una petición a la API de Open-Meteo y rellena la interfaz con:
+
+- La ciudad y el país
+- La temperatura actual
+- La sensación térmica
+- El estado del tiempo
+- La temperatura mínima y máxima del día
+- Una pequeña previsión para el día siguiente
 
 ## Cómo probarlo
 
 1. Abre `index.html` en el navegador.
-2. Pulsa el botón para obtener un personaje nuevo.
-3. Comprueba que se actualiza la imagen y los datos del personaje.
+2. Selecciona una ciudad del desplegable.
+3. Pulsa el botón para consultar el clima.
+4. Comprueba que la información se rellena en la interfaz.
 
-> Para que la petición funcione correctamente, necesitas conexión a Internet.
+> Necesitas conexión a Internet para que la llamada a la API funcione.
