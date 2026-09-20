@@ -16,5 +16,5 @@ No es necesario crear la aplicación desde cero ni añadir nuevas funciones.
 
 ## Ejercicio
 
-1. La imagen no se carga adecuadamente de la API. 
+1. La imagen procedente de la API con un dibujo del personaje no se carga adecuadamente en el DOM.
 2. El _origen_ del personaje tampoco se carga adecuadamente. El origen de los personajes suele ser la Tierra (Earth) u otros planetas del sistema solar , "unknown" (desconocido).
