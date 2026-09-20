@@ -8,10 +8,10 @@ async function getCharacter() {
 
     console.log("Mira la consola del navegador para ver los datos", data);
 
-    document.querySelector("#first").textContent = data.name.toUpperCase();
-    document.querySelector("#last").textContent = data.status.toUpperCase();
-    document.querySelector("#country").textContent = data.species.toUpperCase();
-    document.querySelector("#phone").textContent = data.gender.toUpperCase();
+    document.querySelector("#character-name").textContent = data.name.toUpperCase();
+    document.querySelector("#character-status").textContent = data.status.toUpperCase();
+    document.querySelector("#character-species").textContent = data.species.toUpperCase();
+    document.querySelector("#character-gender").textContent = data.gender.toUpperCase();
     document.querySelector("#photo").src = data.image;
-    document.querySelector("#email").textContent = data.origin.name.toUpperCase();
+    document.querySelector("#character-origin").textContent = data.origin.name.toUpperCase();
 }
