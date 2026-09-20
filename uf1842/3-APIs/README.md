@@ -1,6 +1,6 @@
 # Ejercicio: Rick and Morty API
 
-En este ejercicio trabajarás con [la API de Rick and Morty](https://rickandmortyapi.com/) para obtener los datos de un personaje aleatorio.
+En este ejercicio trabajarás con [la API de Rick and Morty](https://rickandmortyapi.com/) para obtener los datos de un personaje aleatorio de la famosa serie Rick and Morty.
 
 ## La aplicación ya está montada
 
@@ -11,14 +11,10 @@ La estructura HTML, el diseño, el botón y la petición a la API ya están prep
 - Hacer una petición a la API de Rick and Morty.
 - Convertir la respuesta a JSON.
 - Mostrar en la consola del navegador los datos recibidos.
-- Pintar el nombre, el estado, la especie, el género y el origen del personaje.
 
 No es necesario crear la aplicación desde cero ni añadir nuevas funciones.
 
-## Cómo probarlo
+## Ejercicio
 
-1. Abre `index.html` en el navegador.
-2. Pulsa el botón para obtener un personaje nuevo.
-3. Comprueba que se actualiza la imagen y los datos del personaje.
-
-> Para que la petición funcione correctamente, necesitas conexión a Internet.
+1. La imagen no se carga adecuadamente de la API. 
+2. El _origen_ del personaje tampoco se carga adecuadamente. El origen de los personajes suele ser la Tierra (Earth) u otros planetas del sistema solar.

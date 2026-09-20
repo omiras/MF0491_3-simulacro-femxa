@@ -12,6 +12,5 @@ async function getCharacter() {
     document.querySelector("#character-status").textContent = data.status.toUpperCase();
     document.querySelector("#character-species").textContent = data.species.toUpperCase();
     document.querySelector("#character-gender").textContent = data.gender.toUpperCase();
-    document.querySelector("#photo").src = data.image;
     document.querySelector("#character-origin").textContent = data.origin.name.toUpperCase();
 }
