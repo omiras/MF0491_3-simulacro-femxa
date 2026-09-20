@@ -1,6 +1,6 @@
 # Ejercicio: Consulta del tiempo
 
-En este ejercicio trabajaremos con una API gratuita y estable para consultar el tiempo actual y la previsión de varias ciudades.
+Queremos crear una aplicación Web para el móvil, que consulta una la API [Open-Meteo](https://open-meteo.com/) 
 
 ## API elegida
 
@@ -26,7 +26,6 @@ Cuando se selecciona una ciudad, la aplicación hace una petición a la API de O
 - La sensación térmica
 - El estado del tiempo
 - La temperatura mínima y máxima del día
-- Una pequeña previsión para el día siguiente
 
 ## Cómo probarlo
 
@@ -34,5 +33,3 @@ Cuando se selecciona una ciudad, la aplicación hace una petición a la API de O
 2. Selecciona una ciudad del desplegable.
 3. Pulsa el botón para consultar el clima.
 4. Comprueba que la información se rellena en la interfaz.
-
-> Necesitas conexión a Internet para que la llamada a la API funcione.

@@ -57,7 +57,7 @@ async function getWeather() {
     }
 
     const { latitude, longitude, name, country } = geocodingData.results[0];
-    const forecastUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,apparent_temperature,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto&forecast_days=3`;
+    const forecastUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,apparent_temperature,weather_code&daily=temperature_2m_max,temperature_2m_min&timezone=auto&forecast_days=1`;
     const forecastResponse = await fetch(forecastUrl);
     const weatherData = await forecastResponse.json();
 
@@ -67,14 +67,12 @@ async function getWeather() {
     const summary = weatherCodes[weatherCode] || "Condición variable";
     const maxToday = Math.round(daily.temperature_2m_max[0]);
     const minToday = Math.round(daily.temperature_2m_min[0]);
-    const nextDaySummary = weatherCodes[daily.weather_code[1]] || "Condición variable";
 
     document.querySelector("#city").textContent = `${name}, ${country}`;
-    document.querySelector("#temp").textContent = `${Math.round(current.temperature_2m)}°C`;
-    document.querySelector("#feels").textContent = `${Math.round(current.apparent_temperature)}°C`;
+    document.querySelector("#temp").textContent = `${current.temperature_2m}°C`;
+    document.querySelector("#feels").textContent = `${current.apparent_temperature}°C`;
     document.querySelector("#summary").textContent = summary;
     document.querySelector("#range").textContent = `${minToday}°C / ${maxToday}°C`;
-    document.querySelector("#forecast").textContent = `Mañana: ${nextDaySummary}. Máxima ${Math.round(daily.temperature_2m_max[1])}°C y mínima ${Math.round(daily.temperature_2m_min[1])}°C.`;
 
     console.log("Datos meteorológicos", weatherData);
   } catch (error) {

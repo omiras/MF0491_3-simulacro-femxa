@@ -6,44 +6,194 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
   <title>Consulta del tiempo</title>
+  <style>
+    :root {
+      --sky-top: #7ec8ff;
+      --sky-bottom: #dff4ff;
+      --card: rgba(255, 255, 255, 0.7);
+      --card-border: rgba(255, 255, 255, 0.55);
+      --text: #14304a;
+      --muted: #48657d;
+      --primary: #1d6fb8;
+      --primary-dark: #15538d;
+      --shadow: rgba(17, 66, 105, 0.18);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-bottom) 100%);
+      color: var(--text);
+      display: grid;
+      place-items: center;
+    }
+
+    .container {
+      width: min(92vw, 480px);
+      padding: 1.2rem 0;
+    }
+
+    .weather-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      box-shadow: 0 18px 35px var(--shadow);
+      backdrop-filter: blur(8px);
+      overflow: hidden;
+    }
+
+    .weather-header {
+      padding: 1.1rem 1.25rem 0.7rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(180deg, rgba(255,255,255,0.15), transparent);
+    }
+
+    .weather-header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .weather-icon {
+      font-size: 2.2rem;
+      filter: drop-shadow(0 5px 10px rgba(0,0,0,0.08));
+    }
+
+    .weather-body {
+      padding: 0 1.25rem 1.25rem;
+    }
+
+    #citySelect {
+      width: 100%;
+      margin: 0.8rem 0 1rem;
+      border-radius: 12px;
+      border: 1px solid rgba(29, 111, 184, 0.25);
+      background: rgba(255,255,255,0.75);
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .current-box {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.8rem 0.25rem 1rem;
+      border-bottom: 1px solid rgba(20, 48, 74, 0.12);
+    }
+
+    .temp {
+      font-size: clamp(2.5rem, 7vw, 4rem);
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .summary {
+      color: var(--muted);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.72rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .city {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 0;
+      color: #14304a;
+    }
+
+    label {
+      color: #14304a;
+    }
+
+    .details {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .detail {
+      background: rgba(255,255,255,0.5);
+      border-radius: 14px;
+      padding: 0.9rem 0.8rem;
+      border: 1px solid rgba(29,111,184,0.08);
+    }
+
+    .detail-label {
+      display: block;
+      color: var(--muted);
+      font-size: 0.75rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .detail-value {
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    #btn {
+      width: 100%;
+      margin-top: 1rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border: none;
+      box-shadow: 0 10px 18px rgba(29,111,184,0.25);
+      font-weight: 700;
+    }
+
+    #btn:disabled {
+      opacity: 0.7;
+      cursor: wait;
+    }
+  </style>
 </head>
 
 <body>
   <main class="container">
-    <h1>Consulta del tiempo</h1>
-    <article>
-      <header>Datos meteorológicos</header>
+    <article class="weather-card">
+      <header class="weather-header">
+        <h1>Tiempo</h1>
+        <span class="weather-icon" aria-label="icono del tiempo">☀️</span>
+      </header>
 
-      <label for="citySelect">Selecciona una ciudad</label>
-      <select id="citySelect">
-        <option value="Madrid">Madrid</option>
-        <option value="Barcelona">Barcelona</option>
-        <option value="Valencia">Valencia</option>
-      </select>
+      <div class="weather-body">
+        <label for="citySelect">Selecciona una ciudad</label>
+        <select id="citySelect">
+          <option value="Madrid">Madrid</option>
+          <option value="Barcelona">Barcelona</option>
+          <option value="Valencia">Valencia</option>
+        </select>
 
-      <dl>
-        <dt>Ciudad</dt>
-        <dd id="city">Madrid, España</dd>
+        <div class="current-box">
+          <div>
+            <div class="summary" id="summary">--</div>
+            <p class="city" id="city">Madrid, España</p>
+          </div>
+          <div class="temp" id="temp">--</div>
+        </div>
 
-        <dt>Temperatura actual</dt>
-        <dd id="temp">--</dd>
+        <div class="details">
+          <div class="detail">
+            <span class="detail-label">Sensación térmica</span>
+            <span class="detail-value" id="feels">--</span>
+          </div>
 
-        <dt>Sensación térmica</dt>
-        <dd id="feels">--</dd>
+          <div class="detail">
+            <span class="detail-label">Mín / Máx</span>
+            <span class="detail-value" id="range">--</span>
+          </div>
+        </div>
 
-        <dt>Estado</dt>
-        <dd id="summary">--</dd>
-
-        <dt>Mínima / Máxima</dt>
-        <dd id="range">--</dd>
-
-        <dt>Previsión</dt>
-        <dd id="forecast">--</dd>
-      </dl>
-
-      <footer>
         <button type="button" id="btn">Consultar clima</button>
-      </footer>
+      </div>
     </article>
   </main>
 
